@@ -10,4 +10,10 @@ div = soup.find(id="NO_boxx_row") # This is where it gets tricky.  The page does
 
 
 for row in div.find_all('boxx_row'): #tried to get rows with the chunks organized into rows by the div
-    print(row.prettify()) # print a pretty version
+    for cell in row.find_all('a'): # Another tricky thing, not sure if this is gonna work without it being an actual table
+        for cell in row.find_all('label'):
+            for cell in row.find_all('#result_col_2 a'):
+                for cell in row.find_all('#bid_price'):
+        text = cell.text.strip() # get rid of white space
+        list_of_cells.append(text) # add them to the outer list
+    print(list_of_cells)
