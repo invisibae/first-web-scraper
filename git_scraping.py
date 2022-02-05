@@ -17,3 +17,10 @@ for row in div.find_all('boxx_row'): #tried to get rows with the chunks organize
         text = cell.text.strip() # get rid of white space
         list_of_cells.append(text) # add them to the outer list
     print(list_of_cells)
+
+# Skipped the link step because I didn't necessarily want a link
+
+outfile = open("./for_sale.csv", "w") # we have to name the destination and open the file for writing
+writer = csv.writer(outfile) #csv.writer confirms that the file is a csv.  Automatically escapes internal commas.
+writer.writerow(["item", "auction_end", "location", "bid_price"])
+writer.writerows(list_of_rows)
